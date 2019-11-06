@@ -17,7 +17,7 @@
             <span th:each="column : ${columns}">
                 <input
                         type="radio"
-                        name="searchType"
+                        name="searchColumn"
                         th:id="${column.key}"
                         th:value="${column.key}"
                         th:checked="${column.key == 'all'}"/>
@@ -36,7 +36,32 @@
 
     <hr />
 
-    <!-- TODO #2 - Loop over jobs map to display all job fields -->
+
+
+
+
+
+
+    <div th:if="${jobList}">
+        <h2 th:text="${jobList.size()} + ' Result(s)'"></h2>
+        <span th:each="job : ${jobList}">
+                <table class="job-listing">
+                    <span th:each="record : ${job}">
+                        <tr>
+                            <td th:text="${record.key}"></td>
+                            <td th:text="${record.value}"></td>
+                        </tr>
+                    </span>
+                </table>
+            </span>
+    </div>
+
+
+
+    <!-- TODO #2 - Loop over jobs map to display all job fields
+    this template displays the search form as well as results
+    so user can easily search again without navigating elsewhere
+    -->
 
 </div>
 
